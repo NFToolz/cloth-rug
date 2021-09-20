@@ -392,7 +392,8 @@ function init() {
   // scene
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color( 0xffffff );
+  scene.background = new THREE.Color( 0x000bdb );
+  scene.fog = new THREE.Fog( 0x000bdb, 500, 10000 );
 
   // camera
 
@@ -457,17 +458,17 @@ function init() {
 
   // ground
 
-  // const groundTexture = loader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
-  // groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
-  // groundTexture.repeat.set( 25, 25 );
-  // groundTexture.anisotropy = 16;
-  // groundTexture.encoding = THREE.sRGBEncoding;
+  const groundTexture = loader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
+  groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+  groundTexture.repeat.set( 25, 25 );
+  groundTexture.anisotropy = 16;
+  groundTexture.encoding = THREE.sRGBEncoding;
+  const groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
 
-  // const groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
-  const groundMaterial = new THREE.MeshBasicMaterial( {
-    color: 0x07db43,
-    side: THREE.DoubleSide,
-  } );
+  //const groundMaterial = new THREE.MeshBasicMaterial( {
+  //  color: 0x07db43,
+  //  side: THREE.DoubleSide,
+  //} );
 
   let mesh = new THREE.Mesh( new THREE.PlaneGeometry( 20000, 20000 ), groundMaterial );
   mesh.position.y = - 250;

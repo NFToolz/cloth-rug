@@ -552,7 +552,8 @@
 			const firstTokenId = ethers.utils.formatUnits(tokens[0]) * (10 ** 18)
 			const result = await fetch(`https://rugstore-cc67d-default-rtdb.firebaseio.com/${firstTokenId}.json`)
 			const json = await result.json()
-			console.log('IMAGE URL: ', json['image'])
+			const src = json['image'].replace('ipfs://', 'https://ipfs.io/ipfs/')
+			console.log('IMAGE URL: ', src)
 		</script>
 	</body>
 </html>

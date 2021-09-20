@@ -392,8 +392,8 @@ function init() {
   // scene
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color( 0x000bdb );
-  scene.fog = new THREE.Fog( 0x000bdb, 500, 10000 );
+  scene.background = new THREE.Color( 0x00dbcd );
+  scene.fog = new THREE.Fog( 0x00dbcd, 500, 10000 );
 
   // camera
 
@@ -458,9 +458,10 @@ function init() {
 
   // ground
 
-  const groundTexture = loader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
+  //const groundTexture = loader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
+  const groundTexture = loader.load( './libs/grass.jpg' );
   groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
-  groundTexture.repeat.set( 25, 25 );
+  groundTexture.repeat.set( 90, 90 );
   groundTexture.anisotropy = 16;
   groundTexture.encoding = THREE.sRGBEncoding;
   const groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
@@ -491,9 +492,12 @@ function init() {
 
   // renderer
 
-  renderer = new THREE.WebGLRenderer( { antialias: false } );
+  renderer = new THREE.WebGLRenderer( { antialias: true } );
   renderer.setPixelRatio( window.devicePixelRatio );
   renderer.setSize( window.innerWidth, window.innerHeight );
+
+  //renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.shadowMap.enabled = true;
 
   container.appendChild( renderer.domElement );
 

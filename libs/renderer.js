@@ -428,7 +428,7 @@ function init() {
   // cloth material
 
   const loader = new THREE.TextureLoader();
-  const clothTexture = loader.load( 'https://gateway.pinata.cloud/ipfs/QmUCtXptrSRHmJcvKm5P7Myur7aKe38AEB8jtDRojSgqio' );
+  const clothTexture = loader.load( '' );
 
   const clothMaterial = new THREE.MeshBasicMaterial( {
     color: 0xFFFFFF,
@@ -487,6 +487,7 @@ function init() {
   mesh.position.x = 0;
   mesh.receiveShadow = true;
   mesh.castShadow = true;
+  //mesh.visible = false;
   scene.add( mesh );
 
 

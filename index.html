@@ -10,13 +10,17 @@
 				background-color: #fff;
 				color: #000;
 			}
-			a {
-				color: #080;
+			button {
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
 			}
 		</style>
 	</head>
 
 	<body>
+		<button>Connect Metamask</button>
 		<script type="module">
 			import {changeTexture} from './libs/renderer.js'
 			import {ethers} from "https://cdn.jsdelivr.net/npm/ethers@5.4.6/dist/ethers.esm.js"
@@ -62,16 +66,19 @@
 				return $select
 			}
 
-			const tokenList = await getTokenList()
-			const $select = createTokenSelect(tokenList)
+			document.querySelector('button').addEventListener('click', async (event) => {
+				const tokenList = await getTokenList()
+				const $select = createTokenSelect(tokenList)
 
-			$select.addEventListener('change', (event) => {
-				changeSelectedToken(parseInt(event.target.value))
+				$select.addEventListener('change', (event) => {
+					changeSelectedToken(parseInt(event.target.value))
+				})
+
+				event.target.style.display = 'none'
+				document.body.appendChild($select)
+
+				changeSelectedToken(tokenList[0])
 			})
-
-			document.body.appendChild($select)
-
-			changeSelectedToken(tokenList[0])
 		</script>
 	</body>
 </html>

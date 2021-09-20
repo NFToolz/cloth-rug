@@ -406,6 +406,21 @@ function init() {
 
   const light = new THREE.DirectionalLight( 0xdfebff, 1 );
   light.position.set( 50, 200, 100 );
+  light.position.multiplyScalar( 1.3 );
+
+  light.castShadow = true;
+
+  light.shadow.mapSize.width = 1024;
+  light.shadow.mapSize.height = 1024;
+
+  const d = 300;
+
+  light.shadow.camera.left = - d;
+  light.shadow.camera.right = d;
+  light.shadow.camera.top = d;
+  light.shadow.camera.bottom = - d;
+
+  light.shadow.camera.far = 1000;
 
   scene.add( light );
 
@@ -442,7 +457,23 @@ function init() {
 
   // ground
 
-  let mesh = new THREE.Mesh( new THREE.PlaneGeometry( 20000, 20000 ));
+  // const groundTexture = loader.load( 'https://threejs.org/examples/textures/terrain/grasslight-big.jpg' );
+  // groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
+  // groundTexture.repeat.set( 25, 25 );
+  // groundTexture.anisotropy = 16;
+  // groundTexture.encoding = THREE.sRGBEncoding;
+
+  // const groundMaterial = new THREE.MeshLambertMaterial( { map: groundTexture } );
+  const groundMaterial = new THREE.MeshBasicMaterial( {
+    color: 0x07db43,
+    side: THREE.DoubleSide,
+  } );
+
+  let mesh = new THREE.Mesh( new THREE.PlaneGeometry( 20000, 20000 ), groundMaterial );
+  mesh.position.y = - 250;
+  mesh.rotation.x = - Math.PI / 2;
+  mesh.receiveShadow = true;
+  scene.add( mesh );
 
   // poles
 

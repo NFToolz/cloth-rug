@@ -552,7 +552,7 @@
 			const firstTokenId = ethers.utils.formatUnits(tokens[0]) * (10 ** 18)
 			const result = await fetch(`https://rugstore-cc67d-default-rtdb.firebaseio.com/${firstTokenId}.json`)
 			const json = await result.json()
-			const src = json['image'].replace('ipfs://', 'https://ipfs.io/ipfs/')
+			const src = json['image'].replace('ipfs://', 'https://gateway.pinata.cloud/ipfs/')
 			console.log('IMAGE URL: ', src)
 		</script>
 	</body>

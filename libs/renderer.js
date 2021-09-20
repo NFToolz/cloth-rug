@@ -392,8 +392,8 @@ function init() {
   // scene
 
   scene = new THREE.Scene();
-  scene.background = new THREE.Color( 0x00dbcd );
-  scene.fog = new THREE.Fog( 0x00dbcd, 500, 10000 );
+  scene.background = new THREE.Color( 0xaaaaaa );
+  scene.fog = new THREE.Fog( 0xaaaaaa, 500, 10000 );
 
   // camera
 

@@ -20,7 +20,7 @@
 	</head>
 
 	<body>
-		<button>Connect Metamask</button>
+		<button style="display:none">Connect Metamask</button>
 		<script type="module">
 			import {changeTexture} from './libs/renderer.js'
 			import {ethers} from "https://cdn.jsdelivr.net/npm/ethers@5.4.6/dist/ethers.esm.js"
@@ -83,8 +83,9 @@
 			const urlParams = new URLSearchParams(window.location.search);
 			const rugId = urlParams.get('rug');
 			if (rugId) {
-				document.querySelector('button').style.display = 'none'
 				changeSelectedToken(rugId)
+			} else {
+				document.querySelector('button').style.display = 'block'
 			}
 		</script>
 	</body>

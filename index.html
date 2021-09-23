@@ -79,6 +79,13 @@
 
 				changeSelectedToken(tokenList[0])
 			})
+
+			const urlParams = new URLSearchParams(window.location.search);
+			const rugId = urlParams.get('rug');
+			if (rugId) {
+				document.querySelector('button').style.display = 'none'
+				changeSelectedToken(rugId)
+			}
 		</script>
 	</body>
 </html>
